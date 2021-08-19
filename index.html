@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <Script>
+ 
+
+  const options = {
+    method: 'GET',
+    url: 'https://documenu.p.rapidapi.com/restaurants/distance',
+    params: {
+      lat: '40.68919',
+      lon: '-73.992378',
+      mode: 'driving',
+      minutes: '5',
+      size: '30',
+      page: '2',
+      fullmenu: 'true',
+      cuisine: 'Italian',
+      top_cuisines: 'true'
+    },
+    headers: {
+      'x-api-key': 'c5635d237ebd984eddc8c697a7984b37',
+      'x-rapidapi-host': 'documenu.p.rapidapi.com',
+      'x-rapidapi-key': 'db65e1ffd1msh01cf6a541daf477p1eb122jsn2e2d1c14b7cc'
+    }
+  };
+
+  axios.request(options).then(function (response) {
+    console.log(response.data);
+  }).catch(function (error) {
+    console.error(error);
+  });
+  </Script>
+</body>
+</html>
