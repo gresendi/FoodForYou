@@ -5,8 +5,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
 </head>
 <body>
+  <div  class = "row">
+    <div class="column" id="recipes">
+
+    </div>
+
+  </div>
+
+
+
+
+ 
   
 
 
@@ -14,22 +26,18 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <Script>
- 
 
+
+
+<!-- //documenu api, works, searches by zipcode, can filter by cuisine  -->
+  <Script>
   const options = {
     method: 'GET',
-    url: 'https://documenu.p.rapidapi.com/restaurants/distance',
+    url: 'https://documenu.p.rapidapi.com/restaurants/zip_code/92805',
     params: {
-      lat: '40.68919',
-      lon: '-73.992378',
-      mode: 'driving',
-      minutes: '5',
-      size: '30',
-      page: '2',
-      fullmenu: 'true',
-      cuisine: 'Italian',
-      top_cuisines: 'true'
+      cuisine:'Mexican',
+      size:40,
+      fullmenu: true
     },
     headers: {
       'x-api-key': 'c5635d237ebd984eddc8c697a7984b37',
@@ -43,6 +51,49 @@
   }).catch(function (error) {
     console.error(error);
   });
+
+
   </Script>
+
+  <script>
+
+
+    let ingredients = 'apples,+eggs,+chicken'
+
+    axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=6b9d0e1539434e12ab8da9fd6d0a1184&ingredients=${ingredients}&number=10&limitLicense=true&ranking=1&ignorePantry=true`)
+        .then(res => {
+          
+
+
+
+
+          let data = res.data
+          let ids =[]
+         
+          let card = document.createElement('div')
+          console.log(data)
+          for(i=0;i<5;i++){
+            const card = document.createElement('div')
+            console.log(data[i])
+            card.innerHTML=`
+            <h1>${data[i].title}</h1>
+            <img src ="${data[i].image}" alt ="${data[i].title}">
+            <button id = "${data[i].id}">View Recipe</button>
+            `
+
+            document.getElementById('recipes').append(card)
+            
+          }
+          
+          })
+
+
+     
+        .catch(err => console.error(err))
+
+     
+    
+
+  </script>
 </body>
 </html>
