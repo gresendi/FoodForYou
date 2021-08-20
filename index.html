@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/css/uikit.min.css" />
 </head>
 <body>
   <div  class = "row">
@@ -25,12 +25,14 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/js/uikit-icons.min.js"></script>
 
 
 
 
 <!-- //documenu api, works, searches by zipcode, can filter by cuisine  -->
-  <Script>
+  <!-- <Script>
   const options = {
     method: 'GET',
     url: 'https://documenu.p.rapidapi.com/restaurants/zip_code/92805',
@@ -53,10 +55,10 @@
   });
 
 
-  </Script>
+  </Script> -->
 
   <script>
-
+ let results = JSON.parse(localStorage.getItem('results')) || []
 
     let ingredients = 'apples,+eggs,+chicken'
 
@@ -68,30 +70,63 @@
 
 
           let data = res.data
-          let ids =[]
+          
          
           let card = document.createElement('div')
-          console.log(data)
+          // console.log(data)
           for(i=0;i<5;i++){
             const card = document.createElement('div')
-            console.log(data[i])
+            // console.log(data[i])
             card.innerHTML=`
-            <h1>${data[i].title}</h1>
-            <img src ="${data[i].image}" alt ="${data[i].title}">
-            <button id = "${data[i].id}">View Recipe</button>
-            `
-
-            document.getElementById('recipes').append(card)
+            <div class="uk-card uk-card-default">
+            <div class="uk-card-media-top">
+             <img src ="${data[i].image}" alt ="${data[i].title}">
+              </div>
+            <div class="uk-card-body">
+                <h1>${data[i].title}</h1>
             
+            <button id = "${data[i].id}" class ="getrecipe">View Recipe</button></div>
+            </div>
+
+
+          
+            `
+            
+            results.push(data[i].id)
+            document.getElementById('recipes').append(card)
+            // console.log(ids[i])
           }
+          
+          localStorage.setItem('results',JSON.stringify(results))
           
           })
 
 
      
         .catch(err => console.error(err))
+          
+      document.addEventListener('click',event=>{
+        
+        if(event.target.classList.contains('getrecipe')){
+          let id = event.target.id
+          console.log(id)
 
-     
+           axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=6b9d0e1539434e12ab8da9fd6d0a1184`)
+            .then(res => {
+
+              console.log(res)
+              console.log(res.data.title)
+
+            })
+            .catch(err => console.error(err))
+
+        }
+
+       
+
+      })
+
+
     
 
   </script>
