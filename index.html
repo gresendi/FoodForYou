@@ -32,12 +32,12 @@
 
 
 <!-- //documenu api, works, searches by zipcode, can filter by cuisine  -->
-  <!-- <Script>
+  <Script>
   const options = {
     method: 'GET',
-    url: 'https://documenu.p.rapidapi.com/restaurants/zip_code/92805',
+    url: 'https://documenu.p.rapidapi.com/restaurants/zip_code/92805', //gets restaurant by location
     params: {
-      cuisine:'Mexican',
+      cuisine:'Mexican', //gets specific restaurants by cuisine
       size:40,
       fullmenu: true
     },
@@ -50,14 +50,51 @@
 
   axios.request(options).then(function (response) {
     console.log(response.data);
+    let restaurant = response.data.data 
+    console.log(restaurant)
+
+    //loops through all restaurants 
+    restaurant.forEach(rest => {
+        let name = rest.restaurant_name //gets restaurant name
+      let address = rest.address.formatted //gets full address 
+      let phone = rest.restaurant_phone    //gets restaurant phone number
+      let menu = rest.menus[0].menu_sections
+      console.log(name)
+      console.log(address)
+      console.log(phone)
+      console.log(menu)
+
+      //loops through all sections in the main menu
+      menu.forEach(item => {
+        console.log(item.section_name)
+        let items = item.menu_items
+        //logs array in items for easier access
+        console.log(items)
+
+
+        //gets every item in the main menu
+        for(let i = 0;i<items.length;i++)
+        { 
+          console.log(items[i].name) //logs the name of the item.
+          //future implementation to add list items to display restaurants menu
+        }
+       
+    });
+    
+      
+
+    })
+
+
+
   }).catch(function (error) {
     console.error(error);
   });
 
 
-  </Script> -->
+  </Script>
 
-  <script>
+  <!-- <script>
     //array to store recipe results
  let results = JSON.parse(localStorage.getItem('results')) || []
     let apiKey=['75bd90824a3a4624855632ca25d2803b','6b9d0e1539434e12ab8da9fd6d0a1184']
@@ -124,6 +161,6 @@
           
           })
 
-  </script>
+  </script> -->
 </body>
 </html>
