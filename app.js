@@ -1,7 +1,20 @@
 //array to store recipe results
 let results = JSON.parse(localStorage.getItem('results')) || []
-let apiKey = ['75bd90824a3a4624855632ca25d2803b', '6b9d0e1539434e12ab8da9fd6d0a1184','10692f6066e94188b3a428c935d5bab5']
+let apiKey = ['75bd90824a3a4624855632ca25d2803b', '6b9d0e1539434e12ab8da9fd6d0a1184', '10692f6066e94188b3a428c935d5bab5']
 let ingredients = 'steak,+lamb,+garlic'
+
+
+let ingredientsArray = []
+
+document.getElementById('addIngredient').addEventListener('click', () => {
+
+    let ingredient = document.getElementById('ingredientName').value
+    let ingredientElem = document.createElement('a')
+    ingredientElem.className = 'button ingredient'
+    ingredientElem.innerHTML = ingredient
+    document.getElementById('ingredients').append(ingredientElem)
+    ingredientsArray.push(ingredient)
+})
 
 axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[2]}&ingredients=${ingredients}&number=20&limitLicense=true&ranking=1&ignorePantry=true`)
     .then(res => {
