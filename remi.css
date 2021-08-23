@@ -1,7 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-image: url('https://wallpapercave.com/wp/wp5019587.jpg');
   background-attachment: fixed;
   background-size: cover;
+  height: 100vh;
 }
 
 .top-bar, .top-bar ul {
@@ -11,6 +18,30 @@ body {
 h1 {
   font-size: 3rem;
   font-family: 'Source Serif Pro', serif;
+}
+
+.searchBox {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.searchBox i {
+  font-size: 20px;
+  color: #777;
+}
+
+.searchBox input {
+  margin-bottom: 0;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  width: 100%;
 }
 
 .footer {
