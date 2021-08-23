@@ -26,8 +26,17 @@ document.addEventListener('click', event => {
         event.target.remove()
         let name = event.target.innerHTML
         console.log(name)
+    // remove array input // 
+        console.log(ingredientsArray)
+        for (let i = 0; i < ingredientsArray.length; i++) {
+            if (ingredientsArray[i] === name) {
+                ingredientsArray.splice(i, 1)
+            }
+        }
+        console.log(ingredientsArray)
     }
 })
+
 
 axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[4]}&ingredients=${ingredients}&number=20&limitLicense=true&ranking=1&ignorePantry=true`)
     .then(res => {
