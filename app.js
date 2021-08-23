@@ -1,11 +1,12 @@
 //array to store recipe results
 let results = JSON.parse(localStorage.getItem('results')) || []
-let apiKey = ['75bd90824a3a4624855632ca25d2803b', '6b9d0e1539434e12ab8da9fd6d0a1184', '10692f6066e94188b3a428c935d5bab5']
+let apiKey = ['75bd90824a3a4624855632ca25d2803b', '6b9d0e1539434e12ab8da9fd6d0a1184', '10692f6066e94188b3a428c935d5bab5', '654230d7c6694093a69b1921f33789a0', '7a0d026544114effb86382cfa588cd7a', 'e5a2cf5f3401441aba72a1c383214705']
 let ingredients = 'steak,+lamb,+garlic'
 
-
+//array of ingredients
 let ingredientsArray = []
 
+//click event for adding ingredients
 document.getElementById('addIngredient').addEventListener('click', () => {
 
     let ingredient = document.getElementById('ingredientName').value
@@ -14,9 +15,21 @@ document.getElementById('addIngredient').addEventListener('click', () => {
     ingredientElem.innerHTML = ingredient
     document.getElementById('ingredients').append(ingredientElem)
     ingredientsArray.push(ingredient)
+
+
+
 })
 
-axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[2]}&ingredients=${ingredients}&number=20&limitLicense=true&ranking=1&ignorePantry=true`)
+//click event for deleting ingredients
+document.addEventListener('click', event => {
+    if (event.target.classList.contains('ingredient')) {
+        event.target.remove()
+        let name = event.target.innerHTML
+        console.log(name)
+    }
+})
+
+axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[4]}&ingredients=${ingredients}&number=20&limitLicense=true&ranking=1&ignorePantry=true`)
     .then(res => {
 
         //setting data = an array within res
@@ -31,7 +44,7 @@ axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey
 
             // console.log(data[i])
             //getting dataset from spoonacular based off of a specific id
-            axios.get(`https://api.spoonacular.com/recipes/${data[i].id}/information?apiKey=${apiKey[2]}`)
+            axios.get(`https://api.spoonacular.com/recipes/${data[i].id}/information?apiKey=${apiKey[4]}`)
                 .then(res => {
                     let recipe = res.data
                     console.log(recipe)
