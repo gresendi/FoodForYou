@@ -15,17 +15,18 @@
 </head>
 <body>
 
-  <div class="top-bar">
+  <div class="top-bar" id="example-menu">
     <div class="top-bar-left">
-      <ul class="dropdown menu" data-dropdown-menu>
-        <li class="menu-text">Home</li>
-        <li>
-          <a href="#">Recipes</a>
-        </li>
-        <li><a href="#">Restaurants</a></li>
-        <li><a href="#">My favorites</a></li>
+      <ul class="menu">
+        <li><input type="search" id ="ingredientName" placeholder="Add ingredient"></li>
+        <li><button id ="addIngredient"  type="button" class="button">Add Ingredient</button></li>
       </ul>
     </div>
+    <div id ="ingredients" class="stacked-for-small button-group">
+      <a class="button ingredient">apple</a>
+      
+    </div>
+  
   </div>
 
 
