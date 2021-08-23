@@ -5,15 +5,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="./reset.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/css/uikit.min.css" />
+<link rel="stylesheet" href ="./style.css">
 </head>
 <body>
-  <div  class = "row">
-    <div class="column" id="recipes">
-
-    </div>
-
-  </div>
+ 
+<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
+  <ul id ="slider"class="uk-slider-items uk-child-width-1-3@m uk-grid-match" uk-height-viewport="min-height: 300">
+   
+  </ul>
+</div>
 
 
 
@@ -33,134 +35,81 @@
 
 <!-- //documenu api, works, searches by zipcode, can filter by cuisine  -->
   <Script>
-  const options = {
-    method: 'GET',
-    url: 'https://documenu.p.rapidapi.com/restaurants/zip_code/92805', //gets restaurant by location
-    params: {
-      cuisine:'Mexican', //gets specific restaurants by cuisine
-      size:40,
-      fullmenu: true
-    },
-    headers: {
-      'x-api-key': 'c5635d237ebd984eddc8c697a7984b37',
-      'x-rapidapi-host': 'documenu.p.rapidapi.com',
-      'x-rapidapi-key': 'db65e1ffd1msh01cf6a541daf477p1eb122jsn2e2d1c14b7cc'
-    }
-  };
-
-  axios.request(options).then(function (response) {
-    console.log(response.data);
-    let restaurant = response.data.data 
-    console.log(restaurant)
-
-    //loops through all restaurants 
-    restaurant.forEach(rest => {
-        let name = rest.restaurant_name //gets restaurant name
-      let address = rest.address.formatted //gets full address 
-      let phone = rest.restaurant_phone    //gets restaurant phone number
-      let menu = rest.menus[0].menu_sections
-      console.log(name)
-      console.log(address)
-      console.log(phone)
-      console.log(menu)
-
-      //loops through all sections in the main menu
-      menu.forEach(item => {
-        console.log(item.section_name)
-        let items = item.menu_items
-        //logs array in items for easier access
-        console.log(items)
 
 
-        //gets every item in the main menu
-        for(let i = 0;i<items.length;i++)
-        { 
-          console.log(items[i].name) //logs the name of the item.
-          //future implementation to add list items to display restaurants menu
-        }
+  // window.onload = function () {
+  //   var startPos;
+  //   var geoSuccess = function (position) {
+  //     startPos = position;
+  //     document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+  //     document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  //   };
+  //   navigator.geolocation.getCurrentPosition(geoSuccess);
+  // };
+  // const options = {
+  //   method: 'GET',
+  //   url: 'https://documenu.p.rapidapi.com/restaurants/zip_code/92805', //gets restaurant by location
+  //   params: {
+  //     cuisine:'Mexican', //gets specific restaurants by cuisine
+  //     size:40,
+  //     fullmenu: true
+  //   },
+  //   headers: {
+  //     'x-api-key': 'c5635d237ebd984eddc8c697a7984b37',
+  //     'x-rapidapi-host': 'documenu.p.rapidapi.com',
+  //     'x-rapidapi-key': 'db65e1ffd1msh01cf6a541daf477p1eb122jsn2e2d1c14b7cc'
+  //   }
+  // };
+
+  // axios.request(options).then(function (response) {
+  //   console.log(response.data);
+  //   let restaurant = response.data.data 
+  //   console.log(restaurant)
+
+  //   //loops through all restaurants 
+  //   restaurant.forEach(rest => {
+  //       let name = rest.restaurant_name //gets restaurant name
+  //     let address = rest.address.formatted //gets full address 
+  //     let phone = rest.restaurant_phone    //gets restaurant phone number
+  //     let menu = rest.menus[0].menu_sections
+  //     console.log(name)
+  //     console.log(address)
+  //     console.log(phone)
+  //     console.log(menu)
+
+  //     //loops through all sections in the main menu
+  //     menu.forEach(item => {
+  //       console.log(item.section_name)
+  //       let items = item.menu_items
+  //       //logs array in items for easier access
+  //       console.log(items)
+
+
+  //       //gets every item in the main menu
+  //       for(let i = 0;i<items.length;i++)
+  //       { 
+  //         console.log(items[i].name) //logs the name of the item.
+  //         //future implementation to add list items to display restaurants menu
+  //       }
        
-    });
+  //   });
     
       
 
-    })
+  //   })
 
 
 
-  }).catch(function (error) {
-    console.error(error);
-  });
+  // }).catch(function (error) {
+  //   console.error(error);
+  // });
 
 
   </Script>
 
-  <!-- <script>
-    //array to store recipe results
- let results = JSON.parse(localStorage.getItem('results')) || []
-    let apiKey=['75bd90824a3a4624855632ca25d2803b','6b9d0e1539434e12ab8da9fd6d0a1184']
-    let ingredients = 'apples,+eggs,+chicken'
-
-    axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[0]}&ingredients=${ingredients}&number=10&limitLicense=true&ranking=1&ignorePantry=true`)
-        .then(res => {
-          
-          //setting data = an array within res
-          let data = res.data
-          
-          //creating a card
-          let card = document.createElement('div')
-          // console.log(data)
-          //looping through 5 reesults, creating cards for each and then getting more information from spoonacular based of of the recipes id, previouse search reults do not hold all of the infromation required.
-          for(i=0;i<5;i++){
-            const card = document.createElement('div')
-            // console.log(data[i])
-            //getting dataset from spoonacular based off of a specific id
-             axios.get(`https://api.spoonacular.com/recipes/${data[i].id}/information?apiKey=${apiKey[0]}`)
-              .then(res => {
-                let recipe = res.data
-                console.log(recipe)
-                console.log(res.data.title)
-              //creating the innerHTML for the card, getting title, summary and instructions, creating both a card and a module for when the button 'View Recipe' is clicked
-                card.innerHTML = `
-            <div class="uk-card uk-card-default">
-            <div class="uk-card-media-top">
-             <img src ="${recipe.image}" alt ="${data[i].title}">
-              </div>
-            <div class="uk-card-body">
-                <h1>${data[i].title}</h1>
-                <p>${recipe.summary}</p>
-            
-            <button id ="${data[i].id}" uk-toggle="target: #${'modal' + data[i].id}" type="button" class ="getrecipe">View Recipe</button></div>
-            </div>
-
-                  <div id="${'modal' + data[i].id}" uk-modal>
-            <div class="uk-modal-dialog uk-modal-body">
-             <h2 class="uk-modal-title">${recipe.title}</h2>
-              <img src ="${recipe.image}" alt ="${data[i].title}">
-              <div>${recipe.instructions}</div>
-              <button class="uk-modal-close uk-button-default uk-button-large" type="button">Close</button>
-             <button class="uk-button uk-button-primary uk-button-large" type="button">Save</button>
-              </div>
-             
-              </div>
-                  `
-               
-              
-                results.push(data[i].id)
-                document.getElementById('recipes').append(card)
+  <script src="app.js">
 
 
-
-              })
-              .catch(err => console.error(err))
-
-       
-            // console.log(ids[i])
-          }
-          
-          localStorage.setItem('results',JSON.stringify(results))
-          
-          })
-
-  </script> -->
+  </script>
 </body>
 </html>
