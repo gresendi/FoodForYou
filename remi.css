@@ -1,0 +1,25 @@
+body {
+  background-image: url('https://wallpapercave.com/wp/wp5019587.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.top-bar, .top-bar ul {
+  background-color: white;
+}
+
+h1 {
+  font-size: 3rem;
+  font-family: 'Source Serif Pro', serif;
+}
+
+.footer {
+  padding: 5px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  background-color: white;
+}
+
+p {
+  margin-bottom: 0;
+}
