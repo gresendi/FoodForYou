@@ -7,21 +7,18 @@
   <title>Document</title>
   <link rel="stylesheet" href="./reset.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/css/uikit.min.css" />
+<link rel="stylesheet" href ="./style.css">
 </head>
 <body>
-  <div id ="background" data-src="image" uk-img>
-  <div  class = "row">
-    <div class="column" id="recipes">
-      <!-- <div class="column" id="startLat"></div>
-      <div class="column" id="startLon"></div> -->
-    </div>
-
  
- 
-  </div>
-
-
+<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
+  <ul id ="slider"class="uk-slider-items uk-child-width-1-3@m uk-grid-match" uk-height-viewport="min-height: 300">
+   
+  </ul>
 </div>
+
+
+
 
  
   
@@ -110,78 +107,8 @@
 
   </Script>
 
-  <script>
-    //array to store recipe results
- let results = JSON.parse(localStorage.getItem('results')) || []
-    let apiKey=['75bd90824a3a4624855632ca25d2803b','6b9d0e1539434e12ab8da9fd6d0a1184']
-    let ingredients = 'apples,+eggs,+chicken'
+  <script src="app.js">
 
-    axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[0]}&ingredients=${ingredients}&number=10&limitLicense=true&ranking=1&ignorePantry=true`)
-        .then(res => {
-          
-          //setting data = an array within res
-          let data = res.data
-          
-          //creating a card
-          let card = document.createElement('div')
-          // console.log(data)
-          //looping through 5 reesults, creating cards for each and then getting more information from spoonacular based of of the recipes id, previouse search reults do not hold all of the infromation required.
-          for(i=0;i<1;i++){
-            const card = document.createElement('div')
-            
-            // console.log(data[i])
-            //getting dataset from spoonacular based off of a specific id
-             axios.get(`https://api.spoonacular.com/recipes/${data[i].id}/information?apiKey=${apiKey[0]}`)
-              .then(res => {
-                let recipe = res.data
-                console.log(recipe)
-                console.log(res.data.title)
-                let image = recipe.image
-                console.log(image)
-                document.getElementById('background').dataset.src=image
-                
-              //creating the innerHTML for the card, getting title, summary and instructions, creating both a card and a module for when the button 'View Recipe' is clicked
-                card.innerHTML = `
-                
-            <div class="uk-card uk-card-default">
-            <div class="uk-card-media-right">
-             <img src ="${recipe.image}" alt ="${data[i].title}">
-              </div>
-            <div class="uk-card-body">
-                <h1>${data[i].title}</h1>
-                <p>${recipe.summary}</p>
-            
-            <button id ="${data[i].id}" uk-toggle="target: #${'modal' + data[i].id}" type="button" class ="getrecipe">View Recipe</button></div>
-            </div>
-
-                  <div id="${'modal' + data[i].id}" uk-modal>
-            <div class="uk-modal-dialog uk-modal-body">
-             <h2 class="uk-modal-title">${recipe.title}</h2>
-              <img src ="${recipe.image}" alt ="${data[i].title}">
-              <div>${recipe.instructions}</div>
-              <button class="uk-modal-close uk-button-default uk-button-large" type="button">Close</button>
-             <button class="uk-button uk-button-primary uk-button-large" type="button">Save</button>
-              </div>
-             
-              </div>
-                  `
-               
-              
-                results.push(data[i].id)
-                document.getElementById('recipes').append(card)
-
-
-
-              })
-              .catch(err => console.error(err))
-
-       
-            // console.log(ids[i])
-          }
-          
-          localStorage.setItem('results',JSON.stringify(results))
-          
-          })
 
   </script>
 </body>
