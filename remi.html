@@ -17,7 +17,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@600&display=swap" rel="stylesheet">
 
 
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 
   <link rel="stylesheet" href="./remi.css">
@@ -41,11 +43,12 @@
   <div class="grid-x grid-padding-x align-center-middle text-center" style="height: 100vh;">
     <div class="cell small-7">
       <h1>Enter in Ingredients</h1>
-      <form>
-
-        <input type="search" name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
+      <div class="searchBox">
+        <button type="submit" form="searchForm"><i class="fa fa-search"></i></button>
+        <form id="searchForm">
+          <input type="search">
+        </form>
+      </div>
     </div>
   </div>
 
