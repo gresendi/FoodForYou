@@ -9,8 +9,20 @@ body {
   background-attachment: fixed;
   background-size: cover;
   height: 100vh;
+  z-index: 10;
 }
 
-.top-bar, .top-bar ul {
+.top-bar {
+  background-color: white;
+}
+
+.about-text {
+  color: aliceblue;
+}
+
+.footer {
+  padding: 5px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
   background-color: white;
 }
