@@ -12,7 +12,8 @@ body {
 }
 
 .top-bar, .top-bar ul {
-  background-color: white;
+  background-color: darkolivegreen;
+  color: white;
 }
 
 h1 {
@@ -20,19 +21,34 @@ h1 {
   font-family: 'Source Serif Pro', serif;
 }
 
+a {
+  color: white;
+  background-color: ;
+}
+
+a:hover {
+  color: grey;
+}
+
+.biggerfont {
+  font-size: 20px
+}
+
 .searchBox {
-  width: 100%;
+  width: 25%;
   height: 50px;
   background-color: white;
   border-radius: 30px;
   display: flex;
   align-items: center;
   padding: 10px;
+  margin-left: 380px
 }
 
 .searchBox i {
   font-size: 20px;
   color: #777;
+  align-items: center;
 }
 
 .searchBox input {
@@ -40,16 +56,18 @@ h1 {
   box-shadow: none;
   border: none;
   outline: none;
-  margin-left: 10px;
-  width:100%;
-
+  margin-left: 37px;
+  width: 75%;
+  height: 31px;
+  align-items: center;
 }
 
 .footer {
   padding: 5px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
-  background-color: white;
+  background-color: black;
+  color: white;
 }
 
 p {
