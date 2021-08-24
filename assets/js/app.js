@@ -53,6 +53,7 @@ document.addEventListener('click', event => {
         event.target.remove()
         let name = event.target.innerHTML
         console.log(name)
+    // remove array input // 
         console.log(ingredientsArray)
         for (let i = 0; i < ingredientsArray.length; i++) {
             if (ingredientsArray[i] === name) {
@@ -64,6 +65,9 @@ document.addEventListener('click', event => {
         console.log(ingredientsArray)
        
         
+            }
+        }
+        console.log(ingredientsArray)
     }
 })
 //function used to remove all of the recipes from the ul
@@ -92,6 +96,7 @@ console.log(`ingredients: ${ingredientsFormatted}`)
 
 
 axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[0]}&ingredients=${ingredientsFormatted}&number=3&limitLicense=true&ranking=1&ignorePantry=true`)
+axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[4]}&ingredients=${ingredients}&number=20&limitLicense=true&ranking=1&ignorePantry=true`)
     .then(res => {
 
         //setting data = an array within res
