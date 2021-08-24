@@ -39,7 +39,7 @@ document.addEventListener('click', event => {
             }
         }
         renderSlides(ingredientsArray)
-       
+
         console.log(ingredientsArray)
     }
 })
@@ -69,7 +69,7 @@ function renderSlides(ingredients) {
     console.log(`ingredients: ${ingredientsFormatted}`)
 
 
-    axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[0]}&ingredients=${ingredientsFormatted}&number=3&limitLicense=true&ranking=1&ignorePantry=true`)
+    axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[1]}&ingredients=${ingredientsFormatted}&number=3&limitLicense=true&ranking=1&ignorePantry=true`)
         .then(res => {
 
             //setting data = an array within res
@@ -84,7 +84,7 @@ function renderSlides(ingredients) {
 
                 // console.log(data[i])
                 //getting dataset from spoonacular based off of a specific id
-                axios.get(`https://api.spoonacular.com/recipes/${data[i].id}/information?apiKey=${apiKey[0]}`)
+                axios.get(`https://api.spoonacular.com/recipes/${data[i].id}/information?apiKey=${apiKey[1]}`)
                     .then(res => {
                         let recipe = res.data
                         console.log(recipe)
