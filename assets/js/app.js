@@ -113,16 +113,6 @@ axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey
                     // console.log(res.data.title)
                     let image = recipe.image
 
-
-                    // document.body.style.cssText  = `
-                    // background-image: url(${recipe.image});
-                    // background-repeat: no-repeat;
-                    // background-attachment: fixed;
-                    // background-size: cover;
-                    // background-size: 100% 100%;
-                    // ` 
-
-
                     let listItem = document.createElement('li')
 
                     listItem.innerHTML = `
