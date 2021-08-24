@@ -42,108 +42,152 @@ document.addEventListener('click', event => {
 
 
 
-  // documenu api, works, searches by zipcode, can filter by cuisine  
+// documenu api, works, searches by zipcode, can filter by cuisine  
 
-let lati =0;
-let longi =0;
+let lati = 0;
+let longi = 0;
 
-function getCords () {
+
+
+
+window.onload = function () {
     var startPos;
     var geoSuccess = function (position) {
         startPos = position;
         lati = startPos.coords.latitude;
         longi = startPos.coords.longitude;
+        const options = {
+
+            method: 'GET',
+            url: `https://api.documenu.com/v2/restaurants/search/geo`, //gets restaurant by location
+            params: {
+                //gets specific restaurants by cuisine
+                lat: lati,
+                lon: longi,
+                distance: 100,
+                minutes: 40,
+                mode: 'driving',
+                size: 40,
+                fullmenu: true
+            },
+            headers: {
+                'x-api-key': 'c5635d237ebd984eddc8c697a7984b37',
+                'x-rapidapi-host': 'documenu.p.rapidapi.com',
+                'x-rapidapi-key': 'db65e1ffd1msh01cf6a541daf477p1eb122jsn2e2d1c14b7cc'
+            }
+        };
+        getRecipes(options)
     };
-    navigator.geolocation.getCurrentPosition(geoSuccess);
+    var geoError = function (error) {
+        console.log('Error occurred. Error code: ' + error.code);
+        // error.code can be:
+        //   0: unknown error
+        //   1: permission denied
+        //   2: position unavailable (error response from location provider)
+        //   3: timed out
+    };
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+   
 };
-  window.onload = getCords()
+
+function getRecipes (options) {
+    axios.request(options).then(function (response) {
+
+        console.log(response)
+        console.log(response.data);
+        let restaurant = response.data.data
+        console.log(restaurant)
+        let i =0
+
+        //loops through all restaurants 
+        restaurant.forEach(rest => {
+            let name = rest.restaurant_name //gets restaurant name
+            let address = rest.address.formatted //gets full address 
+            let phone = rest.restaurant_phone    //gets restaurant phone number
+            let menu = rest.menus[0].menu_sections
+            let restCard = document.createElement('li')
+
+            //loops through all sections in the main menu
+            menu.forEach(item => {
+               
+                // console.log(item.section_name)
+
+                
+                let items = item.menu_items
+                //logs array in items for easier access
+                // console.log(items)
+                let container = document.createElement('div')
+                container.append(`<h2>${item.section_name}</h2>
+               <h3>Menu</h3> `)
+                
+                let unlist = document.createElement('ul')
+                //gets every item in the main menu
+                for (let i = 0; i < items.length; i++) {
+                    unlist.append(`<li>${items[i].name}</li>`)
+                    let itemName = items[i].name
+                    console.log(itemName)
+                    //   console.log(items[i].name) //logs the name of the item.
+                    //future implementation to add list items to display restaurants menu
+                }
+                container.append(unlist)
+
+            restCard.innerHTML = `
+
+                
+  <div class="uk-card uk-card-primary">
+          
+            <div class="uk-card-body">
+                <h1>${name}</h1>
+                <h2>${address}</h2>
+                <h2>${phone}</h2>
+            
+            <button id ="${phone}" uk-toggle="target: #${'modal' + i}" type="button" class ="getrecipe">View Menu</button></div>
+            </div>
+
+                  <div id="${'modal' + i}" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+             <h2 class="uk-modal-title">${name}</h2>
+             
+              <div>${unlist.innerText}</div>
+              <button class="uk-modal-close uk-button-default uk-button-large" type="button">Close</button>
+             <button class="uk-button uk-button-primary uk-button-large" type="button">Save</button>
+              </div>
+
+              </div>
+      
+                `
+            i++
 
 
 
 
+            document.getElementById('slider').append(restCard)
+                
+
+            });
+           
+
+            
 
 
-  const options = {
-    method: 'GET',
-      url: `https://api.documenu.com/v2/restaurants/search/geo`, //gets restaurant by location
-    params: {
-      //gets specific restaurants by cuisine
-      lat:lati,
-      lon: longi,
-      distance: 100,
-      minutes: 40,
-      mode: 'driving',
-      size:40,
-      fullmenu: true
-    },
-    headers: {
-      'x-api-key': 'c5635d237ebd984eddc8c697a7984b37',
-      'x-rapidapi-host': 'documenu.p.rapidapi.com',
-      'x-rapidapi-key': 'db65e1ffd1msh01cf6a541daf477p1eb122jsn2e2d1c14b7cc'
-    }
-  };
-
-  axios.request(options).then(function (response) {
-      console.log(response)
-    console.log(response.data);
-    let restaurant = response.data.data 
-    console.log(restaurant)
-
-    //loops through all restaurants 
-    restaurant.forEach(rest => {
-        let name = rest.restaurant_name //gets restaurant name
-      let address = rest.address.formatted //gets full address 
-      let phone = rest.restaurant_phone    //gets restaurant phone number
-      let menu = rest.menus[0].menu_sections
-      let menuContainer = document.createElement('ul')
-    //   console.log(name)
-    //   console.log(address)
-    //   console.log(phone)
-    //   console.log(menu)
-
-      //loops through all sections in the main menu
-      menu.forEach(item => {
-        menuContainer.append(`<h3>${item.section_name}</h3>`)
-        // console.log(item.section_name)
-
-        let liItemElem = document.createElement('li')
-        let items = item.menu_items
-        //logs array in items for easier access
-        // console.log(items)
-
-
-        //gets every item in the main menu
-        for(let i = 0;i<items.length;i++)
-        { 
-            liItemElem.innerHTML=''
-            liItemElem.innerHTML=` ${items[i].name}`
-            menuContainer.append(liItemElem)
-        //   console.log(items[i].name) //logs the name of the item.
-          //future implementation to add list items to display restaurants menu
-        }
-
-    });
-    console.log(menuContainer)
-
-
-
-    })
-
-
-
-  }).catch(function (error) {
-    console.error(error);
-  });
-
-
-    getCords()
-axios.get(`http://api.geonames.org/addressJSON?lat=44&lng=-88&username=gresendi95`)
-        .then(res => {
-
-            console.log(res)
-            console.log(lati, longi)
 
         })
-        .catch(err => console.error(err))
-    
+
+
+
+    }).catch(function (error) {
+        console.error(error);
+    });
+
+}
+//     getCords()
+// axios.get(`http://api.geonames.org/findNearbyJSON?lat=44&lng=-88&username=gresendi95`)
+//         .then(res => {
+
+//             console.log(res)
+//             console.log(lati, longi)
+
+//         })
+//         .catch(err => console.error(err))
+
 
