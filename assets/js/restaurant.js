@@ -137,7 +137,7 @@ function getCords () {
 
 
     getCords()
-    axios.get(`http://api.geonames.org/findNearbyPostalCodes?lat=${44}&lng=${-88}&username=gresendi95`)
+axios.get(`http://api.geonames.org/addressJSON?lat=44&lng=-88&username=gresendi95`)
         .then(res => {
 
             console.log(res)
