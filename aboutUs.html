@@ -1,72 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food for You</title>
 
-  <link rel="stylesheet" href="./reset.css">
-
+  <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
     integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@600&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-  <link rel="stylesheet" href="./aboutUs.css">
 
-  <title>About Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="./assets/css/aboutUs.css">
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+
 </head>
+
 <body>
 
-  <div class="container-fluid">
-    <div class="grid-x">
-      <div class="small-12 cell">
-        <div class="top-bar" id="example-menu">
-          <div class="top-bar-left">
-          </div>
-          <div class="stacked-for-small button-group">
-            <a class="button">Home</a>
-            <a class="button">Favorites</a>
-          </div>
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li><a class='menu-text biggerfont' href="./index.html">Food for You</a></li>
+        <li><a class="biggerfont" href="./aboutUs.html">About Us</a></li>
+        <li>
+          <a class="biggerfont" href="./recipe.html">Recipes</a>
+        </li>
+        <li><a class="biggerfont" href="./restaurant.html">Restaurants</a></li>
+        <li><a class="biggerfont" href="./myFavorites.html">My Favorites</a></li>
+      </ul>
     </div>
   </div>
-</div>
-</div>
-</div>
-  <div class="container-fluid about-text">
-    <div class="grid-x">
-      <div class="small-3 cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
-      <div class="small-3 cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
-      <div class="small-3 cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
-      <div class="small-3 cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+
+  <div class="grid-x grid-margin-y flex-crd">
+    <div class="small-3 cell grid">
+      <div class="card" style="width: 250px; padding: 1px;">
+        <div class="card-divider hd-vert-spc">
+          Gilberto
+        </div>
+        <img src="assets/img/generic/rectangle-1.jpg">
+        <div class="card-section">
+          <h4 class="vert-space about-text">This is a card.</h4>
+          <a><button>
+              Link
+            </button></a>
+        </div>
+      </div>
+    </div>
+    <div class="small-3 cell grid hd-vert-spc">
+      <div class="card" style="width: 250px; padding: 1px;">
+        <div class="card-divider">
+          Remi
+        </div>
+        <img src="assets/img/generic/rectangle-1.jpg">
+        <div class="card-section">
+          <h4 class="vert-space about-text">This is a card.</h4>
+          <a><button>
+              Link
+            </button></a>
+        </div>
+      </div>
+    </div>
+    <div class="small-3 cell grid hd-vert-spc">
+      <div class="card" style="width: 250px; padding: 1px;">
+        <div class="card-divider">
+          Alexis
+        </div>
+        <img src="assets/img/generic/rectangle-1.jpg">
+        <div class="card-section">
+          <h4 class="vert-space about-text">This is a card.</h4>
+          <a><button>
+              Link
+            </button></a>
+        </div>
+      </div>
+    </div>
+    <div class="small-3 cell grid hd-vert-spc">
+      <div class="card" style="width: 250px; padding: 1px;">
+        <div class="card-divider">
+          Chris
+        </div>
+        <img src="assets/img/generic/rectangle-1.jpg">
+        <div class="card-section">
+          <h4 class="vert-space about-text">This is a card.</h4>
+          <a><button>
+              Link
+            </button></a>
+        </div>
+      </div>
+    </div>
   </div>
-  
-        
+  </div>
 
+  <footer id='footer' class="footer">
+    <p>
+      &copy; 2021 Created by Alexis Venegas, Chris Livingston, Gilberto Resendiz, and Remi Kim
+    </p>
+  </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/js/uikit-icons.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
+    integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
 
-
-
-
-
-<footer id='footer' class="footer">
-  <p>
-    &copy; 2021 Created by Alexis Venegas, Chris Livingston, Gilberto Resendiz, and Remi Kim
-  </p>
-</footer>
-
-<!--JS Links-->
-        <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
-          integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
-        <script src="app.js"></script>
-        
-        <script src="./recipe.js"></script>
-  
 </body>
+
 </html>
