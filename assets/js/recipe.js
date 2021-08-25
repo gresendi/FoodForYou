@@ -2,7 +2,10 @@
 let apiKey = ['75bd90824a3a4624855632ca25d2803b', '6b9d0e1539434e12ab8da9fd6d0a1184', '10692f6066e94188b3a428c935d5bab5', '654230d7c6694093a69b1921f33789a0', '7a0d026544114effb86382cfa588cd7a', 'e5a2cf5f3401441aba72a1c383214705', '81ce8ed43c26458abb7e9c40cd19eda8', '41a14134f83a4f7386c1344e5a69ddcd', '8749340965d3428586c18ba074e0c4de', '68c5a0da0f5f493ca287426de7a1b0dc', 'c5aa3e9b829b464fbcfa7de12c1af17f']
 //array which is either getting ingredients from local storage or creating a new array
 let ingredientsArray = JSON.parse(localStorage.getItem('ingredients')) || []
-let allRecipes = []
+let savedRecipe = JSON.parse(localStorage.getItem('savedRecipe')) || []
+let localArray = JSON.parse(localStorage.getItem('savedRecipe')) || []
+console.log(localArray)
+let allRecipes=[]
 
 //array of ingredients user inputed
 
@@ -69,25 +72,26 @@ function renderSlides(ingredients) {
 
 
 
-    axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[0]}&ingredients=${ingredientsFormatted}&number=3&limitLicense=true&ranking=1&ignorePantry=true`)
+    axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[5]}&ingredients=${ingredientsFormatted}&number=3&limitLicense=true&ranking=1&ignorePantry=true`)
         .then(res => {
 
             //setting data = an array within res
             let data = res.data
-
+            
             //creating a card
             let card = document.createElement('div')
             // console.log(data)
             //looping through 5 reesults, creating cards for each and then getting more information from spoonacular based of of the recipes id, previouse search reults do not hold all of the infromation required.
+            let saved =0
             for (i = 0; i < data.length; i++) {
                 const card = document.createElement('div')
 
                 // console.log(data[i])
                 //getting dataset from spoonacular based off of a specific id
-                axios.get(`https://api.spoonacular.com/recipes/${data[i].id}/information?apiKey=${apiKey[0]}`)
+                axios.get(`https://api.spoonacular.com/recipes/${data[i].id}/information?apiKey=${apiKey[5]}`)
                     .then(res => {
                         let recipe = res.data
-                        
+                        allRecipes.push(recipe)
 
                         // console.log(res.data.title)
                         let image = recipe.image
@@ -118,16 +122,16 @@ function renderSlides(ingredients) {
               <img src ="${recipe.image}" alt ="${recipe.title}">
               <div>${recipe.instructions}</div>
               <button class="uk-modal-close uk-button-default uk-button-large" type="button">Close</button>
-             <button class="uk-button uk-button-primary uk-button-large save" type="button">Save</button>
+             <button class="uk-button uk-button-primary uk-button-large save${saved++}" type="button">Save</button>
               </div>
 
               </div>
       
                 `
-                        console.log(recipe.instructions)
+                        
 
                         document.getElementById('slider').append(listItem)
-
+                       
 
 
 
@@ -147,12 +151,28 @@ function renderSlides(ingredients) {
 }
 
 document.addEventListener('click', event => {
-    if (event.target.classList.contains('save')){
-        console.log(event.target.parentNode)
-        console.log(event.target.parentNode)
-        allRecipes.push(event.target.parentNode)
-        localStorage.setItem('savedRecipe',JSON.stringify(allRecipes))
-    }
 
+    for (i = 0; i < allRecipes.length; i++) {
+        if (event.target.classList.contains(`save${i}`)) {
+         
+        console.log(allRecipes[i])
+
+          
+            let recipeObject = {}
+            recipeObject["name"] = allRecipes[i].title
+            recipeObject["image"] = allRecipes[i].image
+            recipeObject["id"] = allRecipes[i].id
+            recipeObject["summary"] = allRecipes[i].summary
+            recipeObject["instructions"] = allRecipes[i].instructions
+
+            console.log(recipeObject)
+            localArray.push(recipeObject);
+
+            console.log(localArray)
+          
+    
+            localStorage.setItem('savedRecipe', JSON.stringify((localArray)))
+        }
+    }
 
 })
