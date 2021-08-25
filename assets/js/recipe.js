@@ -92,13 +92,7 @@ function renderSlides(ingredients) {
                         let image = recipe.image
 
 
-                        // document.body.style.cssText  = `
-                        // background-image: url(${recipe.image});
-                        // background-repeat: no-repeat;
-                        // background-attachment: fixed;
-                        // background-size: cover;
-                        // background-size: 100% 100%;
-                        // ` 
+                
 
 
                         let listItem = document.createElement('li')
