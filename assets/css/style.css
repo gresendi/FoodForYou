@@ -61,6 +61,28 @@ a:hover {
   align-items: center;
 }
 
+#ingredientName {
+  margin-bottom: 0;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.button-group {
+  margin-bottom: 0;
+}
+
+.button-group.stacked-for-small .button:last-child {
+  margin-right: 5px;
+}
+
+.button.ingredient {
+  border-radius: 30px;
+  background-color: #1e87f0;
+}
+
 .footer {
   padding: 5px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
