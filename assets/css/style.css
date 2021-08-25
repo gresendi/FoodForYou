@@ -98,3 +98,43 @@ p {
 .about-text {
   color: aliceblue;
 }
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .top-bar, .top-bar ul {
+    flex-direction: column;
+  }
+  body {
+    flex-direction: column;
+  }
+  h1 {
+    flex-direction: column;
+    color: rgb(27, 30, 221);
+    font-size: x-large;
+  }
+  .flex-crd {
+    flex-direction: column;
+  }
+  .footer {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 39.9375em) {
+  .top-bar, .top-bar ul {
+    flex-direction: column;
+  }
+  body {
+    flex-direction: row;
+  }
+  h1 {
+    flex-direction: column;
+    color: white;
+    font-size: medium;
+  }
+  .flex-crd {
+    flex-direction: column;
+  }
+  .footer {
+    flex-direction: row;
+  }
+}
