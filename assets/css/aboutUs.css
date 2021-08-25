@@ -12,17 +12,47 @@ body {
   z-index: 10;
 }
 
-.top-bar {
-  background-color: white;
+.top-bar, .top-bar ul {
+  background-color: darkolivegreen;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: grey;
+}
+
+.flex-crd {
+  margin: 10%;
+  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .about-text {
-  color: aliceblue;
+  font-size: 1rem;
+  font-family: 'Source Serif Pro', serif;
+}
+
+.hd-vert-spc {
+  margin: 1px;
+  color: black;
+}
+
+.vert-space {
+  margin: 50px;
 }
 
 .footer {
   padding: 5px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
-  background-color: white;
+  background-color: black;
+  color: white;
+}
+
+p {
+  margin-bottom: 0;
 }
