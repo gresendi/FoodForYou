@@ -56,3 +56,33 @@ a:hover {
 p {
   margin-bottom: 0;
 }
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .top-bar, .top-bar ul {
+    flex-direction: column;
+  }
+  body {
+    flex-direction: column;
+  }
+  .flex-crd {
+    flex-direction: column;
+  }
+  .footer {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 39.9375em) {
+  .top-bar, .top-bar ul {
+    flex-direction: column;
+  }
+  body {
+    flex-direction: column;
+  }
+  .flex-crd {
+    flex-direction: column;
+  }
+  .footer {
+    flex-direction: column;
+  }
+}
