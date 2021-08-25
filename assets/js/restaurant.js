@@ -180,14 +180,5 @@ function getRecipes (options) {
     });
 
 }
-//     getCords()
-// axios.get(`http://api.geonames.org/findNearbyJSON?lat=44&lng=-88&username=gresendi95`)
-//         .then(res => {
-
-//             console.log(res)
-//             console.log(lati, longi)
-
-//         })
-//         .catch(err => console.error(err))
 
 
