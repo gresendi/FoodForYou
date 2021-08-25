@@ -34,14 +34,14 @@ a:hover {
 }
 
 .searchBox {
-  width: 25%;
+  width: 75%;
   height: 50px;
   background-color: white;
   border-radius: 30px;
   display: flex;
   align-items: center;
   padding: 10px;
-  margin-left: 380px
+  margin-left: 12%;
 }
 
 .searchBox i {
