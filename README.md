@@ -8,4 +8,6 @@ Enter in the ingredients that you have in your fridge and click on the "Recipes"
 
 Not feeling like cooking, then head over to our "Restaurant" tab and watch local restaurants populate the page! In addition, you can view the menu of each restaurant to see if you want to eat there or not. 
 
+If you would like to know more about the developers of Food for You, check out our "About Us" tab!
+
 Now, you will never be stuck on planning a meal again!
