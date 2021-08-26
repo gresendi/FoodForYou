@@ -95,7 +95,9 @@ a:hover {
 p {
   margin-bottom: 0;
 }
+
 /* --About-page-css-- */
+
 .flex-crd {
   margin: 10%;
   justify-content: center;
@@ -103,20 +105,25 @@ p {
 }
 
 .about-text {
-  color: aliceblue;
+  color: rgb(54, 44, 65);
   font-size: 1rem;
   font-family: 'Source Serif Pro', serif;
 }
 
 .hd-vert-spc {
   margin: 1px;
-  color: black;
+  color: rgb(54, 44, 65);
+  font-size: 2rem;
+  font-family: 'Source Serif Pro', serif;
+  
 }
 
 .vert-space {
   margin: 50px;
 }
+
 /* --media-query-- */
+
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
   .top-bar, .top-bar ul {
     flex-direction: column;
