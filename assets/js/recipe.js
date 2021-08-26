@@ -170,7 +170,7 @@ document.addEventListener('click', event => {
                 recipeObject["instructions"] = allRecipes[i].instructions
                 let alreadySaved = false
                 localArray.forEach(element =>{
-                    if(element ===recipeObject)
+                    if(element.name ===recipeObject.name)
                     {
                         console.log('equal')
                         alreadySaved = true
