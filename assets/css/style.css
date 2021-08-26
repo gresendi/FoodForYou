@@ -8,7 +8,8 @@ body {
   background-image: url('https://wallpapercave.com/wp/wp5019587.jpg');
   background-attachment: fixed;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
+  z-index: 10;
 }
 
 .top-bar, .top-bar ul {
@@ -94,11 +95,28 @@ a:hover {
 p {
   margin-bottom: 0;
 }
+/* --About-page-css-- */
+.flex-crd {
+  margin: 10%;
+  justify-content: center;
+  justify-content: space-evenly;
+}
 
 .about-text {
   color: aliceblue;
+  font-size: 1rem;
+  font-family: 'Source Serif Pro', serif;
 }
 
+.hd-vert-spc {
+  margin: 1px;
+  color: black;
+}
+
+.vert-space {
+  margin: 50px;
+}
+/* --media-query-- */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
   .top-bar, .top-bar ul {
     flex-direction: column;
@@ -113,6 +131,9 @@ p {
   }
   .flex-crd {
     flex-direction: column;
+  }
+  #fav-slider {
+    margin: -133px;
   }
   .footer {
     flex-direction: column;
@@ -133,6 +154,9 @@ p {
   }
   .flex-crd {
     flex-direction: column;
+  }
+  #fav-slider {
+    margin: -133px;
   }
   .footer {
     flex-direction: row;
