@@ -1,61 +1,16 @@
-let ingredientsArray = JSON.parse(localStorage.getItem('ingredients')) || []
 
-//array of ingredients user inputed
-
-
-//function to render ingredients as buttons
-function renderIngredients(array) {
-
-    array.forEach(element => {
-        let li = document.createElement('li')
-        let ingredientElem = document.createElement('a')
-        ingredientElem.className = 'button ingredient'
-        ingredientElem.innerHTML = element
-        console.log(element)
-        li.append(ingredientElem)
-        document.getElementById('ingredients').append(li)
-
-    });
-
-}
-renderIngredients(ingredientsArray)
-
-
-document.addEventListener('click', event => {
-
-    if (event.target.classList.contains('ingredient')) {
-        event.target.remove()
-        let name = event.target.innerHTML
-        console.log(name)
-        console.log(ingredientsArray)
-        for (let i = 0; i < ingredientsArray.length; i++) {
-            if (ingredientsArray[i] === name) {
-                ingredientsArray.splice(i, 1)
-                localStorage.setItem("ingredients", JSON.stringify(ingredientsArray));
-            }
-        }
-        // renderSlides(ingredientsArray)
-
-        console.log(ingredientsArray)
-    }
-})
+let lati = 0;           //used to store latitude
+let longi = 0;      //used to store longitude
 
 
 
-// documenu api, works, searches by zipcode, can filter by cuisine  
-
-let lati = 0;
-let longi = 0;
-
-
-
-
+//function called when the page loads, asks user for permission to share location, if user accepts then it reassigns the values for lati and longi, then runs getRestaurants(options)
 window.onload = function () {
     var startPos;
     var geoSuccess = function (position) {
         startPos = position;
-        lati = startPos.coords.latitude;
-        longi = startPos.coords.longitude;
+        lati = startPos.coords.latitude;                //gets latitude
+        longi = startPos.coords.longitude;          //gets longitude
         const options = {
 
             method: 'GET',
@@ -76,7 +31,7 @@ window.onload = function () {
                 'x-rapidapi-key': 'db65e1ffd1msh01cf6a541daf477p1eb122jsn2e2d1c14b7cc'
             }
         };
-        getRecipes(options)
+        getRestaurants(options)  //runs getRestaurants(options) upon success of obtaining user's locations
     };
     var geoError = function (error) {
         console.log('Error occurred. Error code: ' + error.code);
@@ -86,18 +41,16 @@ window.onload = function () {
         //   2: position unavailable (error response from location provider)
         //   3: timed out
     };
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-   
-};
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError); //asks user for location permissions
 
-function getRecipes (options) {
+};
+//function used to render restaurants onto the webpage
+function getRestaurants(options) {
     axios.request(options).then(function (response) {
 
-        console.log(response)
-        console.log(response.data);
+
         let restaurant = response.data.data
-        console.log(restaurant)
-        let i =0
+        let i = 0  //index used to assign specif class names to later be used for modal targets
 
         //loops through all restaurants 
         restaurant.forEach(rest => {
@@ -109,32 +62,28 @@ function getRecipes (options) {
 
             //loops through all sections in the main menu
             menu.forEach(item => {
-               
-                // console.log(item.section_name)
 
-                
+
+
                 let items = item.menu_items
                 //logs array in items for easier access
-                // console.log(items)
                 let container = document.createElement('div')
                 container.append(`<h2>${item.section_name}</h2>
                <h3>Menu</h3> `)
-                
+
                 let unlist = document.createElement('ul')
                 //gets every item in the main menu
                 for (let i = 0; i < items.length; i++) {
                     unlist.append(`<li>${items[i].name}</li>`)
                     let itemName = items[i].name
-                    console.log(itemName)
-                    //   console.log(items[i].name) //logs the name of the item.
-                    //future implementation to add list items to display restaurants menu
+
                 }
                 container.append(unlist)
 
-            restCard.innerHTML = `
+                restCard.innerHTML = `
 
                 
-  <div class="uk-card uk-card-primary">
+           <div class="uk-card uk-card-primary">
           
             <div class="uk-card-body">
                 <h1>${name}</h1>
@@ -150,30 +99,16 @@ function getRecipes (options) {
              
               <div>${unlist.innerText}</div>
               <button class="uk-modal-close uk-button-default uk-button-large" type="button">Close</button>
-             <button class="uk-button uk-button-primary uk-button-large" type="button">Save</button>
               </div>
 
               </div>
       
                 `
-            i++
-
-
-
-
-            document.getElementById('slider').append(restCard)
-                
-
+                i++//increments the index used to apply specific modal target names
+                document.getElementById('slider').append(restCard) //appending modal card to webpage
             });
-           
-
-            
-
-
 
         })
-
-
 
     }).catch(function (error) {
         console.error(error);
