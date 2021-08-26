@@ -95,7 +95,9 @@ a:hover {
 p {
   margin-bottom: 0;
 }
+
 /* --About-page-css-- */
+
 .flex-crd {
   margin: 10%;
   justify-content: center;
@@ -116,7 +118,9 @@ p {
 .vert-space {
   margin: 50px;
 }
+
 /* --media-query-- */
+
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
   .top-bar, .top-bar ul {
     flex-direction: column;
@@ -126,7 +130,7 @@ p {
   }
   h1 {
     flex-direction: column;
-    color: rgb(27, 30, 221);
+    color: black;
     font-size: x-large;
   }
   .flex-crd {
@@ -149,7 +153,7 @@ p {
   }
   h1 {
     flex-direction: column;
-    color: white;
+    color: black;
     font-size: medium;
   }
   .flex-crd {
