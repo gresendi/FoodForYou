@@ -105,14 +105,17 @@ p {
 }
 
 .about-text {
-  color: aliceblue;
+  color: rgb(54, 44, 65);
   font-size: 1rem;
   font-family: 'Source Serif Pro', serif;
 }
 
 .hd-vert-spc {
   margin: 1px;
-  color: black;
+  color: rgb(54, 44, 65);
+  font-size: 2rem;
+  font-family: 'Source Serif Pro', serif;
+  
 }
 
 .vert-space {
