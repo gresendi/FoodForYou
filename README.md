@@ -11,3 +11,7 @@ Not feeling like cooking, then head over to our "Restaurant" tab and watch local
 If you would like to know more about the developers of Food for You, check out our "About Us" tab!
 
 Now, you will never be stuck on planning a meal again!
+
+
+link to repo: https://github.com/gresendi/Project1
+link to site:  https://gresendi.github.io/Project1/index.html
