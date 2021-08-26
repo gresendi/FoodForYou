@@ -71,9 +71,6 @@ function renderSlides(ingredients, index) {
     }
 
 
-
-
-
     axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[index]}&ingredients=${ingredientsFormatted}&number=${numRecipes}&limitLicense=true&ranking=1&ignorePantry=true`) //requesting recipes based off of ingredients given
         .then(res => {
 
