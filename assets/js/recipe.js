@@ -4,8 +4,8 @@ let apiKey = ['75bd90824a3a4624855632ca25d2803b', '6b9d0e1539434e12ab8da9fd6d0a1
 let ingredientsArray = JSON.parse(localStorage.getItem('ingredients')) || []
 let localArray = JSON.parse(localStorage.getItem('savedRecipe')) || [] //array to store savedRecipes, retrieving any already stored in localStorage
 let allRecipes = []
-let apiIndex = 0 //index for the apiKeys, changed if current pull requests are not working, 0-10 
-
+let apiIndex = 6 //index for the apiKeys, changed if current pull requests are not working, 0-10 
+let numRecipes = 10
 
 
 
@@ -74,7 +74,7 @@ function renderSlides(ingredients, index) {
 
 
 
-    axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[index]}&ingredients=${ingredientsFormatted}&number=3&limitLicense=true&ranking=1&ignorePantry=true`) //requesting recipes based off of ingredients given
+    axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey[index]}&ingredients=${ingredientsFormatted}&number=${numRecipes}&limitLicense=true&ranking=1&ignorePantry=true`) //requesting recipes based off of ingredients given
         .then(res => {
 
             //setting data = an array within res
