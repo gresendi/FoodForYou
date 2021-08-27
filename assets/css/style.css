@@ -98,6 +98,18 @@ p {
 
 /* --About-page-css-- */
 
+h8 {
+  font-size: 17px !important;
+}
+
+h7 {
+  font-size: 20px !important;
+}
+
+.card-section {
+  height: 400px;
+}
+
 .flex-crd {
   margin: 10%;
   justify-content: center;
@@ -119,6 +131,26 @@ p {
 
 .vert-space {
   margin: 50px;
+}
+
+.aline-self-middle-1 {
+  height: 100px;
+  margin-top: 40px;
+}
+
+.aline-self-middle-2 {
+  height: 100px;
+  margin-top: 118px;
+}
+
+.aline-self-middle-3 {
+  height: 100px;
+  margin-top: -13px;
+}
+
+.aline-self-middle-4 {
+  height: 100px;
+  margin-top: 65px;
 }
 
 /* --media-query-- */
