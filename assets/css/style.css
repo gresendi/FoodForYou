@@ -115,7 +115,6 @@ p {
   color: rgb(54, 44, 65);
   font-size: 2rem;
   font-family: 'Source Serif Pro', serif;
-  
 }
 
 .vert-space {
@@ -133,8 +132,8 @@ p {
   }
   h1 {
     flex-direction: column;
-    color: black;
-    font-size: x-large;
+    color: #ffffff;
+    font-size: 3rem;
   }
   .flex-crd {
     flex-direction: column;
@@ -156,8 +155,8 @@ p {
   }
   h1 {
     flex-direction: column;
-    color: black;
-    font-size: medium;
+    color: #ffffff;
+    font-size: 1.5rem;
   }
   .flex-crd {
     flex-direction: column;
