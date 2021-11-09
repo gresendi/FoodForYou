@@ -14,4 +14,4 @@ Now, you will never be stuck on planning a meal again!
 
 
 link to repo: https://github.com/gresendi/Project1
-link to site:  https://gresendi.github.io/Project1/index.html
+link to site:  https://gresendi.github.io/FoodForYou/
